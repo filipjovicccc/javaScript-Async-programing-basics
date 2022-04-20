@@ -13,6 +13,7 @@ function getPostExample() {
     document.body.innerHTML = display;
   }, 1000);
 }
+
 function createNewPost(post) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -26,6 +27,11 @@ function createNewPost(post) {
     }, 2000);
   });
 }
-createNewPost({ animal: "tiger", color: "yellow", age: 5 })
-  .then(getPostExample)
-  .catch((err) => console.log(err));
+
+async function get() {
+  await createNewPost({ animal: "bear", color: "brown", age: 8 });
+
+  getPostExample();
+}
+
+get();
